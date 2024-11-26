@@ -1,0 +1,158 @@
+<div class="flex flex-col min-h-screen">
+  <!-- Header -->
+  <header
+    class="bg-indigo-600 text-white p-4 top-0 left-0 right-0 z-10 shadow-md"
+  >
+    <nav class="flex justify-between items-center">
+      <h1 class="text-2xl font-bold">TaxTrack</h1>
+      <div class="space-x-4">
+        <button
+          onclick="window.location.href='/graph'"
+          class="bg-white text-indigo-600 px-4 py-2 rounded-lg shadow-md hover:bg-indigo-500 hover:text-white transition"
+        >
+          Estadisticas
+        </button>
+        <button
+          onclick="window.location.href='/post'"
+          class="bg-white text-indigo-600 px-4 py-2 rounded-lg shadow-md hover:bg-indigo-500 hover:text-white transition"
+        >
+          Compra
+        </button>
+        <button
+          onclick="window.location.href='/postBuy'"
+          class="bg-white text-indigo-600 px-4 py-2 rounded-lg shadow-md hover:bg-indigo-500 hover:text-white transition"
+        >
+          Venta
+        </button>
+        <button
+          onclick="window.location.href='/pdfs'"
+          class="bg-white text-indigo-600 px-4 py-2 rounded-lg shadow-md hover:bg-indigo-500 hover:text-white transition"
+        >
+          PDF
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div
+    class="flex min-h-screen items-start justify-center bg-gray-100 px-4 py-8 sm:px-6 lg:px-8"
+  >
+    <!-- Formulario -->
+    <form (ngSubmit)="onSubmit()" class="w-full max-w-3xl mr-8">
+      <div
+        class="w-full relative rounded-lg bg-white p-10 shadow-xl border border-gray-200"
+      >
+        <a
+          href="/"
+          class="absolute top-4 left-4 rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Volver a la página principal
+        </a>
+        <div class="flex justify-center gap-y-4">
+          <h1 class="text-2xl font-bold p-4 ">Gastos</h1>
+        </div>
+        <div class="space-y-8">
+          <div class="border-b border-gray-200 pb-8">
+            <div class="mt-8 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-6">
+              <div class="sm:col-span-4">
+                <label
+                  for="Nombre"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Nombre
+                </label>
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    id="Nombre"
+                    name="Nombre"
+                    [(ngModel)]="form.Nombre"
+                    class="block w-full h-7 p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="col-span-full">
+                <label
+                  for="Descripcion"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Descripcion
+                </label>
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    id="Descripcion"
+                    name="Descripcion"
+                    [(ngModel)]="form.Descripcion"
+                    class="block w-full h-15 p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="sm:col-span-4">
+                <label
+                  for="Cantidad"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Cantidad
+                </label>
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    id="Cantidad"
+                    name="Cantidad"
+                    [(ngModel)]="form.Cantidad"
+                    class="block w-full h-9 p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="sm:col-span-4">
+                <label
+                  for="Fecha"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Fecha
+                </label>
+                <div class="mt-2">
+                  <input
+                    type="date"
+                    id="Fecha"
+                    name="Fecha"
+                    [(ngModel)]="form.Fecha"
+                    class="block w-full h-8 p-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center gap-x-4">
+          <button
+            type="submit"
+            class="rounded-md bg-indigo-600 px-6 py-3 text-sm font-medium text-white shadow-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          >
+            Guardar
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Vista previa de la card -->
+    <div
+      class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg border border-gray-200"
+    >
+      <h2 class="text-2xl font-semibold text-gray-800">Vista Previa</h2>
+      <p class="mt-4 text-gray-600">Nombre: {{ form.Nombre }}</p>
+      <p class="mt-2 text-gray-600">Descripcion: {{ form.Descripcion }}</p>
+      <p class="mt-2 text-gray-600">Cantidad: {{ form.Cantidad }}</p>
+      <p class="mt-2 text-gray-600">Fecha: {{ form.Fecha }}</p>
+    </div>
+  </div>
+</div>

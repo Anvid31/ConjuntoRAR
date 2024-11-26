@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Repositorio de Películas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body class="bg-gray-100 p-5">
+    <h1 class="text-4xl font-bold underline text-center mb-5">Repositorio de Películas</h1>
+
+    <!-- Contenedor de las películas -->
+    <div id="lista-peliculas" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Las películas se agregarán aquí -->
+    </div>
+
+    <!-- Formulario para agregar/editar películas -->
+    <form id="formAdd" class="flex flex-col w-full max-w-md mx-auto items-center bg-white p-5 rounded-lg shadow-lg space-y-4 mt-10">
+      <label for="titulo" class="w-full">
+        <input
+          type="text"
+          name="titulo"
+          id="titulo"
+          placeholder="Título"
+          class="bg-gray-200 w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </label>
+      <label for="urlImagen" class="w-full">
+        <input
+          type="text"
+          name="urlImagen"
+          id="urlImagen"
+          placeholder="URL de la Imagen"
+          class="bg-gray-200 w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </label>
+      <label for="url" class="w-full">
+        <input
+          type="text"
+          name="url"
+          id="url"
+          placeholder="URL de la Película"
+          class="bg-gray-200 w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </label>
+      <button
+        type="submit"
+        class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
+      >
+        Enviar
+      </button>
+    </form>
+  </body>
+</html>

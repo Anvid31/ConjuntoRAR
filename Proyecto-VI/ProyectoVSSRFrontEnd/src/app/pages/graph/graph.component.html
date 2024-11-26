@@ -1,0 +1,58 @@
+<div class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white p-4 fixed top-0 left-0 right-0 z-10 shadow-md">
+      <nav class="flex justify-between items-center">
+        <a class="text-2xl font-bold" href="/">TaxTrack</a>
+        <div class="space-x-4">
+          <button
+            onclick="window.location.href='/graph'"
+            class="bg-white text-indigo-600 px-4 py-2 rounded-lg shadow-md hover:bg-indigo-500 hover:text-white transition"
+          >
+            Estadisticas
+          </button>
+          <button
+            onclick="window.location.href='/post'"
+            class="bg-white text-indigo-600 px-4 py-2 rounded-lg shadow-md hover:bg-indigo-500 hover:text-white transition"
+          >
+            Compra
+          </button>
+          <button
+            onclick="window.location.href='/postBuy'"
+            class="bg-white text-indigo-600 px-4 py-2 rounded-lg shadow-md hover:bg-indigo-500 hover:text-white transition"
+          >
+            Venta
+          </button>
+          <button
+          onclick="window.location.href='/pdfs'"
+          class="bg-white text-indigo-600 px-4 py-2 rounded-lg shadow-md hover:bg-indigo-500 hover:text-white transition"
+        >
+          PDF
+        </button>
+        </div>
+      </nav>
+    </header>
+  
+    <!-- Main Content -->
+    <main class="flex-grow mt-20 p-6 bg-gray-100">
+      <!-- Sales and Purchases Chart -->
+      <div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mb-10">
+        <h2 class="text-2xl font-semibold text-center mb-6 text-gray-800">Sales and Purchases Chart</h2>
+        <div class="flex justify-center">
+          <canvas baseChart 
+                  [data]="salesData"
+                  [options]="chartOptions"
+                  chartType="bar"
+                  class="w-full max-w-3xl">
+          </canvas>
+        </div>
+      </div>
+  
+   
+    </main>
+  
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4 fixed bottom-0 left-0 right-0 shadow-md">
+      <p class="text-center">&copy; 2024 TaxTrack. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+  

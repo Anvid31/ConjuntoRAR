@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  projectback:
+    build:
+      context: ./ProyectBack
+      dockerfile: Dockerfile
+    ports:
+      - "4321:4321"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  proyectovback:
+    build:
+      context: ./Proyecto-VI/ProyectoVBack
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - NODE_ENV=production
+      - PORT=8001
+      - DBURL=mongodb+srv://mendozadiazjuandavid:e7pIFg7L7S0SWWsC@cluster0.i4bvy.mongodb.net/ProyectV
+    networks:
+      - app-network
+
+  proyectovssrfrontend:
+    build:
+      context: ./Proyecto-VI/ProyectoVSSRFrontEnd
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+    depends_on:
+      - proyectovback
+
+networks:
+  app-network:
+    driver: bridge

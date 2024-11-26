@@ -1,0 +1,75 @@
+<div class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white p-4 fixed top-0 left-0 right-0 z-10 shadow-md">
+      <nav class="flex justify-between items-center">
+        <a class="text-2xl font-bold" href="/">TaxTrack- Extracto Mensual</a>
+        <div class="space-x-4">
+          <button
+            onclick="window.print()"
+            class="bg-white text-indigo-600 px-4 py-2 rounded-lg shadow-md hover:bg-indigo-500 hover:text-white transition"
+          >
+            Imprimir / Generar PDF
+          </button>
+        </div>
+      </nav>
+    </header>
+  
+    <!-- Main Content -->
+    <main class="flex-grow mt-24 p-6 bg-gray-100">
+      <!-- Extracto Mensual -->
+      <section class="p-6 bg-white rounded-lg shadow-lg border border-gray-200">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Extracto Mensual de Gastos y Ventas</h2>
+        <p class="text-gray-600 mb-6">Periodo: {{ mes }} {{ anio }}</p>
+  
+        <!-- Resumen General -->
+        <div class="mb-10">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Resumen General</h3>
+          <p class="text-gray-800 mb-2">Total Gastos: {{ totalGastos }}</p>
+          <p class="text-gray-800 mb-2">Total Ventas: {{ totalVentas }}</p>
+          <p class="text-gray-800 font-bold">Total Actual: {{ totalActual }}</p>
+        </div>
+  
+        <!-- Detalles de Gastos -->
+        <div class="mb-10">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Detalles de Gastos</h3>
+          <div *ngIf="data.length > 0" class="space-y-4">
+            <div *ngFor="let item of data" class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <p class="text-gray-800 font-semibold">{{ item.nombre }}</p>
+              <p class="text-gray-600">Descripción: {{ item.descripcion }}</p>
+              <p class="text-gray-600">Cantidad: {{ item.cantidad }}</p>
+              <p class="text-gray-600">Fecha: {{ item.fecha }}</p>
+            </div>
+          </div>
+          <p *ngIf="data.length === 0" class="text-center text-gray-600 mt-6">No se encontraron datos de gastos.</p>
+        </div>
+  
+        <!-- Detalles de Ventas -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Detalles de Ventas</h3>
+          <div *ngIf="data2.length > 0" class="space-y-4">
+            <div *ngFor="let item of data2" class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <p class="text-gray-800 font-semibold">{{ item.nombre }}</p>
+              <p class="text-gray-600">Descripción: {{ item.descripcion }}</p>
+              <p class="text-gray-600">Cantidad: {{ item.cantidad }}</p>
+              <p class="text-gray-600">Fecha: {{ item.fecha }}</p>
+            </div>
+          </div>
+          <p *ngIf="data2.length === 0" class="text-center text-gray-600 mt-6">No se encontraron datos de ventas.</p>
+        </div>
+      </section>
+      <div class="flex justify-center mt-8">
+        <button
+          (click)="generarPDF()"
+          class="bg-indigo-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-indigo-500 transition"
+        >
+          Descargar Extracto en PDF
+        </button>
+      </div>
+    </main>
+  
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4 mt-10 shadow-md">
+      <p class="text-center">&copy; 2024 TaxTrack. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+  

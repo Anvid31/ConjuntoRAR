@@ -8,7 +8,7 @@ let peliculaActualId = null; // Guardar el ID de la película actual que se est�
 // Cargar las películas desde el backend
 async function cargarPeliculas() {
   try {
-    const request = await fetch("http://localhost:4321/api/peliculas");
+    const request = await fetch("http://77.37.97.40:4321/api/peliculas");
     const data = await request.json();
 
     // Limpiar el contenedor antes de agregar las nuevas películas
@@ -35,26 +35,13 @@ async function cargarPeliculas() {
         window.location.href = element.url;
       });
 
-      const editarBtn = document.createElement("button");
-      editarBtn.textContent = "Editar";
-      editarBtn.classList.add("bg-green-500", "text-white", "font-bold", "py-2", "px-4", "mt-2", "rounded-lg", "hover:bg-green-600", "transition", "duration-300");
-      editarBtn.addEventListener("click", () => {
-        prepararEdicion(element._id, element.titulo, element.urlImagen, element.url);
-      });
 
-      const eliminarBtn = document.createElement("button");
-      eliminarBtn.textContent = "Eliminar";
-      eliminarBtn.classList.add("bg-red-500", "text-white", "font-bold", "py-2", "px-4", "mt-2", "rounded-lg", "hover:bg-red-600", "transition", "duration-300");
-      eliminarBtn.addEventListener("click", () => {
-        eliminarPelicula(element._id);
-      });
 
       // Añadir los elementos al contenedor de la película
       div.appendChild(imgPel);
       div.appendChild(titulo);
       div.appendChild(verAhoraBtn);
-      div.appendChild(editarBtn);
-      div.appendChild(eliminarBtn);
+
 
       container.appendChild(div);
     });
@@ -67,7 +54,7 @@ async function cargarPeliculas() {
 // Eliminar una película
 async function eliminarPelicula(id) {
   try {
-    const response = await fetch(`http://localhost:4321/api/peliculas/${id}`, {
+    const response = await fetch(`http://77.37.97.40:4321/api/peliculas/${id}`, {
       method: 'DELETE',
     });
 
@@ -111,7 +98,7 @@ formularioAgregar.addEventListener("submit", async (e) => {
     let request;
     if (editando) {
       // Modo edición, hacemos una solicitud PUT
-      request = await fetch(`http://localhost:4321/api/peliculas/${peliculaActualId}`, {
+      request = await fetch(`http://77.37.97.40:4321/api/peliculas/${peliculaActualId}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
@@ -120,7 +107,7 @@ formularioAgregar.addEventListener("submit", async (e) => {
       });
     } else {
       // Modo agregar, hacemos una solicitud POST
-      request = await fetch("http://localhost:4321/api/peliculas/add", {
+      request = await fetch("http://77.37.97.40:4321/api/peliculas/add", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

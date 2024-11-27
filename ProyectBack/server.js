@@ -4,6 +4,8 @@ import routerPeliculas from "./routes/peliculas.routes.js";
 import routerLoginRegistro from "./routes/LoginRegistro.routes.js"; 
 import path from "path";
 import generarPDFRouter from "./routes/GenerarPDF.routes.js"; 
+import generarXLSXRouter from "./routes/GenerarXLSX.routes.js"; 
+
 
 // Conectar a la base de datos
 (async () => {
@@ -31,6 +33,9 @@ app.use("/api/auth", routerLoginRegistro);
 
 // Ruta para generar PDF
 app.use('/generar-pdf', generarPDFRouter); 
+
+// Ruta para generar XLSX
+app.use('/xlsx', generarXLSXRouter); 
 
 // Redirigir a /login.html
 app.get('/', (req, res) => {

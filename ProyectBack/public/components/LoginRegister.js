@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            const response = await fetch('http://localhost:4321/api/auth/register', {
+            const response = await fetch('http://77.37.97.40:4321/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const password = document.getElementById('loginPassword').value;
 
 
-             const response = await fetch('http://localhost:4321/api/auth/login', {
+             const response = await fetch('http://77.37.97.40:4321/api/auth/login', {
              method: 'POST',
                  headers: {
                      'Content-Type': 'application/json',

@@ -5,7 +5,8 @@ import { body, validationResult } from 'express-validator';
 export const validarPelicula = [
     body('titulo').notEmpty().withMessage('El título es obligatorio'),
     body('urlImagen').isURL().withMessage('La URL de la imagen debe ser válida'),
-    body('url').isURL().withMessage('La URL debe ser válida')
+    body('url').isURL().withMessage('La URL debe ser válida'),
+    body('gender').notEmpty().withMessage('El genero es obligatorio')
 ];
 
 // Agregar una película
@@ -18,7 +19,7 @@ export async function agregar(req, res) {
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const { titulo, urlImagen, url } = req.body;
+        const { titulo, urlImagen, url, gender } = req.body;
 
         // Verificar si la película ya existe
         const existingMovie = await Pija.findOne({ titulo });
@@ -30,7 +31,7 @@ export async function agregar(req, res) {
         }
 
         // Crear y guardar nueva película
-        const movieToSave = new Pija({ titulo, urlImagen, url });
+        const movieToSave = new Pija({ titulo, urlImagen, url, gender });
         const movieSaved = await movieToSave.save();
 
         if (!movieSaved) {
@@ -100,7 +101,7 @@ export async function eliminarPelicula(req, res) {
 export async function editarPelicula(req, res) {
     try {
         const { id } = req.params;
-        const { titulo, urlImagen, url } = req.body;
+        const { titulo, urlImagen, url, gender } = req.body;
 
         // Validar los datos
         const errors = validationResult(req);
@@ -120,6 +121,7 @@ export async function editarPelicula(req, res) {
         movie.titulo = titulo || movie.titulo;
         movie.urlImagen = urlImagen || movie.urlImagen;
         movie.url = url || movie.url;
+        movie.gender = gender || movie.gender;
 
         const movieUpdated = await movie.save();
 
